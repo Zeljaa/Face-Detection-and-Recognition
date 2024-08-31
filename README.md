@@ -14,7 +14,7 @@ This project implements a face recognition system, which involves two key steps:
 
 ## Usage
 
-### Face Recognition (folder: FaceRecognizer)
+### Face Recognition (folder_name: FaceRecognition)
 This folder contains the following components:
 
 1. **FaceEmbeddings File**
@@ -62,52 +62,20 @@ This folder contains the following components:
    Additionally, there is a `class_names` list, which contains all the unique names present in the database. This setup facilitates efficient face recognition by enabling quick comparisons between stored embeddings and new face inputs.
 
 
-### Face Detection (Folder: yoloface)
+### Face Detection (folder_name: yoloface)
 This folder contains a downloaded repository from [elyha7](https://github.com/elyha7/yoloface), whose YOLO-based model and pre-trained weights have been utilized for face detection in this project.
 
 
 ### GUI
+The `gui.py` file integrates the face detection model from `model.py`, where the face detection is performed, and the embeddings for face recognition are calculated. These embeddings are then compared to the stored database to find the closest match.
+
+The GUI also includes an option to save detected faces. You can enable this feature at the beginning of the script by modifying the relevant setting.
+
+**How to Run the GUI:**
+  ```bash
+  python gui.py
+  ```
 
 
-
-
-### Folder Structure
-
-- **face_detection/**: This folder contains the code and models related to face detection. It includes:
-  - **Model files**: Trained YOLOv5 models specifically fine-tuned for face detection.
-  - **Detection scripts**: Python scripts for running face detection on input images or video streams.
-
-- **face_recognition/**: This folder includes the components related to face recognition. It contains:
-  - **Model files**: The fine-tuned ResNet50 model and its associated embeddings.
-  - **Recognition scripts**: Python scripts for recognizing faces using embeddings. This includes code for computing and comparing embeddings.
-
-### Files
-
-- **gui.py**: This file contains the graphical user interface (GUI) for the project. To use the GUI:
-  1. Run the script with Python:
-     ```bash
-     python gui.py
-     ```
-  2. The GUI will launch, allowing you to interact with the face detection and recognition functionalities. Follow the on-screen instructions to use the features provided.
-
-- **moduls.py**: This file includes modular functions and classes for both face detection and recognition. To use this file:
-  1. Import the necessary functions or classes into your script:
-     ```python
-     from moduls import FaceDetector, FaceRecognizer
-     ```
-  2. Initialize the classes and call their methods as needed for face detection and recognition. For example:
-     ```python
-     # Initialize the face detector
-     detector = FaceDetector()
-     
-     # Detect faces in an image
-     faces = detector.detect(image_path)
-     
-     # Initialize the face recognizer
-     recognizer = FaceRecognizer()
-     
-     # Recognize faces in the detected regions
-     identities = recogn35izer.recognize(faces)
-     ```
 
 Make sure you have all the required dependencies installed and the models properly set up before running the scripts.
