@@ -50,8 +50,8 @@ This folder contains the following components:
        embedding = model(input_tensor).numpy()
 
    print(embedding)
-    '''
-2. **Store New Embeddings File**
+    
+2. **StoreNewEmbeddings File**
    - This file is used for creating embeddings from face images and storing them in a database in pickle format (`.pkl`). These stored embeddings are later used during face recognition.
 
    The structure of the Pickle (`.pkl`) file is as follows:
