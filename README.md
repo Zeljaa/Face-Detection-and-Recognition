@@ -18,7 +18,9 @@ This project implements a face recognition system, which involves two key steps:
 This is a folder that has stored 
 
 ### Face Detection (folder: yoloface)
-Thr whole folder is downloaded repo from elyha7, whose weights I have been using for my project. Her repo you can find on this link https://github.com/elyha7/yoloface.
+### Face Detection (Folder: yoloface)
+This folder contains a downloaded repository from [elyha7](https://github.com/elyha7/yoloface), whose YOLO-based model and pre-trained weights have been utilized for face detection in this project.
+
 
 ### GUI
 
