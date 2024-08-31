@@ -15,9 +15,53 @@ This project implements a face recognition system, which involves two key steps:
 ## Usage
 
 ### Face Recognition (folder: FaceRecognizer)
-This is a folder that has stored 
+This folder contains the following components:
 
-### Face Detection (folder: yoloface)
+1. **FaceEmbeddings File**
+   - This file includes the model used for calculating embeddings from faces. Below is an example of how to use the `FaceEmbeddings` class:
+
+   ```python
+   from FaceEmbeddings import FaceEmbeddings
+   from torchvision import transforms
+   from PIL import Image
+   import torch
+
+   # Initialize the FaceEmbeddings model
+   model = FaceEmbeddings()
+
+   # Path to the image
+   image_path = 'face.jpg'
+
+   # Define the image transformations
+   transform = transforms.Compose([
+       transforms.Resize((224, 224)),  # Resize the image to 224x224 pixels
+       transforms.ToTensor(),          # Convert the image to a tensor
+   ])
+
+   # Open and process the image
+   image = Image.open(image_path).convert('RGB')
+   input_tensor = transform(image)
+
+   # Add a batch dimension (1, 3, 224, 224)
+   input_tensor = input_tensor.unsqueeze(0)
+
+   # Compute the embedding
+   with torch.no_grad():
+       embedding = model(input_tensor).numpy()
+
+   print(embedding)
+    '''
+2. **Store New Embeddings File**
+   - This file is used for creating embeddings from face images and storing them in a database in pickle format (`.pkl`). These stored embeddings are later used during face recognition.
+
+   The structure of the Pickle (`.pkl`) file is as follows:
+   - A list of tuples: `[(embedding, class_name), ...]`
+     - `embedding`: A NumPy array representing the 128-dimensional face embedding.
+     - `class_name`: The label or name associated with the embedding.
+
+   Additionally, there is a `class_names` list, which contains all the unique names present in the database. This setup facilitates efficient face recognition by enabling quick comparisons between stored embeddings and new face inputs.
+
+
 ### Face Detection (Folder: yoloface)
 This folder contains a downloaded repository from [elyha7](https://github.com/elyha7/yoloface), whose YOLO-based model and pre-trained weights have been utilized for face detection in this project.
 
